@@ -1,0 +1,992 @@
+/* ==========================================================================
+   1. Design System Tokens & Base Resets (Anti-White Pastel Theme)
+   ========================================================================== */
+   :root {
+    --bg-primary: #E8ECE9;          /* Soft, muted pastel slate-sage (No harsh white) */
+    --bg-surface: #F4F7F5;          /* Clean, creamy mint-tinted card surface */
+    --text-primary: #2C352F;        /* Deep slate pine text */
+    --text-muted: #5A6B61;          /* Earthy green-grey */
+    --accent: #7FA38B;              /* Balanced pastel sage green */
+    --accent-glow: #DCEBE1;         /* Ultra-soft pastel highlighting mix */
+    --nav-bg: rgba(232, 236, 233, 0.9);
+    --card-shadow: 0 10px 30px rgba(112, 138, 121, 0.12);
+    --border-color: #CBDCD0;
+    
+    /* Candle Engine Hex Values (Soft Pastels) */
+    --candle-bull: #8ECCD0;         /* Soft pastel teal */
+    --candle-bear: #E26D77;         /* Soft pastel coral red */
+    --candle-neutral: #AAB3B5;      /* Muted grey */
+  }
+  
+  body.dark-mode {
+    --bg-primary: #171C19;          /* Matte charcoal pine */
+    --bg-surface: #1F2622;          /* Smooth dark sage canvas */
+    --text-primary: #E5EDE7;        /* Soft vintage linen white */
+    --text-muted: #8FA195;          /* Dusty pastel sage */
+    --accent: #A2E3C4;              /* Vibrantly soft pastel mint */
+    --accent-glow: #28312B;         /* Deep grounding slate */
+    --nav-bg: rgba(23, 28, 25, 0.9);
+    --card-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    --border-color: rgba(162, 227, 196, 0.12);
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    font-size: 62.5%; /* 1rem = 10px layout scale */
+    scroll-behavior: smooth;
+    background-color: var(--bg-primary);
+    transition: background-color 0.3s ease;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--text-primary);
+    overflow-x: hidden;
+    font-size: 1.6rem;
+    background-color: var(--bg-primary);
+  }
+  
+  /* ==========================================================================
+     2. Shared Navigation Architecture
+     ========================================================================== */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 6%;
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+    transition: background 0.3s, border-color 0.3s;
+  }
+  
+  nav .logo a {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -1px;
+  }
+  nav .logo a::before {
+    content: "🌲 PINES FINANCE";
+  }
+  
+  .nav-items {
+    display: flex;
+    align-items: center;
+    gap: 3.5rem;
+  }
+  
+  .nav-items a {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  
+  .nav-items a:hover {
+    color: var(--accent);
+  }
+  
+  /* Document Dropdown Element Matrix */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-trigger {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-weight: 500;
+    padding-bottom: 0.5rem;
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--bg-surface);
+    min-width: 200px;
+    box-shadow: var(--card-shadow);
+    border-radius: 8px;
+    padding: 1rem 0;
+    margin-top: 1rem;
+    border: 1px solid var(--border-color);
+  }
+  
+  .dropdown-menu a {
+    display: block;
+    padding: 1.2rem 2rem;
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  
+  .dropdown-menu a:hover {
+    background: var(--accent-glow);
+    color: var(--text-primary);
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  .theme-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.8rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  body.dark-mode .mode-icon-light { display: none; }
+  body:not(.dark-mode) .mode-icon-dark { display: none; }
+  
+  /* ==========================================================================
+     3. Index / Home Master Layout Structure
+     ========================================================================== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 14rem 6% 8rem 6%;
+  }
+  
+  .hero-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 8rem;
+    align-items: center;
+  }
+  
+  .column-left h1 {
+    font-size: clamp(3.5rem, 5vw, 6.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -2px;
+    margin-bottom: 2.5rem;
+    color: var(--text-primary);
+  }
+  
+  .column-left p {
+    font-size: 1.9rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+  
+  .column-right img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  /* Parallax Linear Ribbon Separator */
+  .parallax-divider {
+    background: var(--accent);
+    padding: 5rem 0;
+    text-align: center;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+  
+  .parallax-divider h2 {
+    color: var(--bg-surface);
+    font-size: clamp(2.5rem, 4vw, 4.5rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  /* Feature Metrics Grid Matrix */
+  .features-section {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 12rem 6%;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 4rem;
+  }
+  
+  .feature-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 4.5rem 4rem;
+    box-shadow: var(--card-shadow);
+  }
+  
+  .feature-card h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+  }
+  
+  .feature-card p {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+  
+  /* ==========================================================================
+     4. Markets Layout & Subguides (guide.html / stocks.html)
+     ========================================================================== */
+  .guide-section {
+    min-height: 100vh;
+    padding: 15rem 6% 8rem 6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .guide-container {
+    max-width: 1000px;
+    width: 100%;
+  }
+  
+  .guide-subtitle {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 1rem;
+  }
+  
+  .guide-heading {
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 800;
+    margin-bottom: 6rem;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 1.5rem;
+  }
+  
+  .guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+  }
+  
+  .guide-card-btn {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 4rem;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+  
+  .guide-card-btn:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    background: var(--accent-glow);
+  }
+  
+  .guide-card-btn h2 {
+    font-size: 2.4rem;
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+  
+  .guide-card-btn .btn-arrow {
+    font-size: 2.4rem;
+    color: var(--text-muted);
+    transition: transform 0.2s ease;
+  }
+  
+  .guide-card-btn:hover .btn-arrow {
+    transform: translateX(6px);
+    color: var(--accent);
+  }
+  
+  /* ==========================================================================
+     5. Terminal Stock Screener Layout Engine (options.html)
+     ========================================================================== */
+  .screener-section {
+    padding: 14rem 4% 8rem 4%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .screener-header {
+    margin-bottom: 4rem;
+  }
+  
+  .screener-subtitle {
+    font-size: 1.2rem;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 1rem;
+  }
+  
+  .screener-title {
+    font-size: 3.6rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+  }
+  
+  .screener-description {
+    font-size: 1.6rem;
+    color: var(--text-muted);
+    max-width: 800px;
+  }
+  
+  .screener-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+  
+  .search-input-wrapper {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .search-input-wrapper input,
+  #candleSearch {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    font-size: 1.6rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  
+  .search-input-wrapper input:focus,
+  #candleSearch:focus {
+    border-color: var(--accent);
+  }
+  
+  .matches-count-badge {
+    font-family: monospace;
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    background: var(--accent-glow);
+    color: var(--text-primary);
+    border-radius: 50px;
+  }
+  
+  .presets-row {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+  }
+  
+  .presets-label {
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: var(--text-muted);
+  }
+  
+  .preset-btn {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    padding: 0.8rem 1.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  
+  .preset-btn:hover {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+  }
+  
+  .screener-controls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-bottom: 5rem;
+  }
+  
+  .filter-card-block {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 3rem;
+    box-shadow: var(--card-shadow);
+  }
+  
+  .filter-card-block h3 {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2.5rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 1rem;
+    color: var(--text-primary);
+  }
+  
+  .filter-row-input {
+    margin-bottom: 2rem;
+  }
+  
+  .filter-row-input:last-child {
+    margin-bottom: 0;
+  }
+  
+  .filter-row-input label {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+  }
+  
+  .filter-row-input select,
+  .dual-range-inputs input {
+    width: 100%;
+    padding: 1.2rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    outline: none;
+    font-size: 1.4rem;
+  }
+  
+  .dual-range-inputs {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .dual-range-inputs span {
+    font-size: 1.4rem;
+    color: var(--text-muted);
+  }
+  
+  .filter-row-input input[type="range"] {
+    width: 100%;
+    accent-color: var(--accent);
+  }
+  
+  /* Tabular Screener Data Matrix rendering */
+  .table-wrapper {
+    overflow-x: auto;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+  }
+  
+  .screener-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 1.4rem;
+  }
+  
+  .screener-table th,
+  .screener-table td {
+    padding: 1.8rem 2.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .screener-table th {
+    background: var(--accent-glow);
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+  
+  .screener-table tbody tr:hover {
+    background: var(--accent-glow);
+  }
+  
+  .ticker-col {
+    font-family: monospace;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+  }
+  
+  /* Strategic Pastel Badging Configurations */
+  .profile-tag {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .profile-tag.general { background: #E2E8F0; color: #4A5568; }
+  .profile-tag.dividend-tag { background: #D8F3DC; color: #1B4332; } /* Pastel green */
+  .profile-tag.growth-tag { background: #CDEFFA; color: #0077B6; }   /* Pastel blue */
+  .profile-tag.momentum-tag { background: #FDE2E4; color: #A4133C; } /* Pastel pink */
+  .profile-tag.longterm { background: #E8E8E4; color: #4F5D75; }     /* Soft sand */
+  .profile-tag.speculative-tag { background: #FFE5D9; color: #D00000; } /* Pastel orange-red */
+  
+  body.dark-mode .profile-tag { filter: opacity(0.9) brightness(0.95); }
+  
+  .search-empty-state {
+    padding: 6rem;
+    text-align: center;
+    font-size: 1.6rem;
+    color: var(--text-muted);
+    display: none;
+  }
+  
+  /* ==========================================================================
+     6. Accordion Viewport & Candlestick Models (candlesticks.html)
+     ========================================================================== */
+  .subguide-section {
+    padding: 14rem 6% 8rem 6%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .subguide-header {
+    margin-bottom: 5rem;
+  }
+  
+  .back-link {
+    font-size: 1.4rem;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--accent);
+    display: inline-block;
+    margin-bottom: 2rem;
+  }
+  
+  .back-link:hover { color: var(--text-primary); }
+  
+  .subguide-heading {
+    font-size: 3.6rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+  
+  .subguide-lead {
+    font-size: 1.7rem;
+    color: var(--text-muted);
+  }
+  
+  .search-wrapper {
+    position: relative;
+    margin-bottom: 5rem;
+  }
+  
+  .search-clear-btn {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.4rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    display: none;
+  }
+  
+  .accordion-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .accordion-item {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+  }
+  
+  .accordion-trigger {
+    width: 100%;
+    padding: 2.5rem 3rem;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-align: left;
+    transition: background 0.2s;
+  }
+  
+  .accordion-trigger:hover {
+    background: var(--accent-glow);
+  }
+  
+  .accordion-arrow {
+    font-size: 1.4rem;
+    color: var(--accent);
+    transition: transform 0.3s ease;
+  }
+  
+  .accordion-content {
+    display: none;
+    padding: 0 3rem 3rem 3rem;
+    border-top: 1px solid transparent;
+  }
+  
+  /* Opened state mechanics mapped directly via active JS selectors */
+  .accordion-item.active .accordion-content {
+    display: block;
+    border-top-color: var(--border-color);
+  }
+  
+  .accordion-item.active .accordion-arrow {
+    transform: rotate(180deg);
+  }
+  
+  .section-brief-desc {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    line-height: 1.6;
+  }
+  
+  /* Specialized Pure CSS Candlestick Plot Engine Grid */
+  .candlesticks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 2.5rem;
+  }
+  
+  .candle-card-item {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .candle-card-item h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
+  .candle-visual-box {
+    width: 100px;
+    height: 130px;
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  
+  .candle-visual-box.row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  
+  .candle-single {
+    width: 24px;
+    height: 100%;
+    position: relative;
+  }
+  
+  .css-wick {
+    position: absolute;
+    width: 2px;
+    background: var(--candle-bull);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .css-body {
+    position: absolute;
+    width: 14px;
+    background: var(--candle-bull);
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 1px;
+  }
+  
+  /* Structural color variation mapping rules */
+  .css-wick.bearish, .css-body.bearish { background: var(--candle-bear); }
+  .css-wick.neutral, .css-body.neutral { background: var(--candle-neutral); }
+  
+  
+  /* ==========================================================================
+     7. Custom Pines About Layout Overrides (about.html Constraints)
+     ========================================================================== */
+  .pines-about-view { 
+    background: var(--bg-primary) !important; 
+    min-height: calc(100vh - 7rem) !important; 
+    width: 100vw !important; 
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    padding: 14rem 0 6rem 0 !important; 
+    margin: 0 !important;
+    box-sizing: border-box !important; 
+    overflow-y: auto !important; 
+  }
+  
+  .pines-inner-wrap { 
+    display: block !important;
+    width: 100% !important;
+    max-width: 900px !important;
+    padding: 0 2rem !important;
+    box-sizing: border-box !important;
+  }
+  
+  .pines-subtitle-text { 
+    color: var(--accent) !important; 
+    font-size: 1.3rem !important; 
+    text-transform: uppercase; 
+    letter-spacing: 3px; 
+    font-weight: bold; 
+    display: block !important; 
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .pines-heading-text { 
+    font-size: 3.6rem !important; 
+    color: var(--text-primary) !important; 
+    margin: 0 0 4rem 0 !important; 
+    font-weight: 800; 
+    border-bottom: 2px solid var(--accent) !important; 
+    padding-bottom: 0.8rem !important;
+    display: block !important;
+  }
+  
+  .pines-grid-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3rem !important; 
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .pines-flush-card { 
+    background: var(--bg-surface) !important; 
+    border: 1px solid var(--border-color) !important;
+    border-radius: 10px !important;
+    padding: 3.5rem !important; 
+    box-sizing: border-box !important;
+    box-shadow: var(--card-shadow) !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .pines-flush-card h3 { 
+    font-size: 1.8rem !important; 
+    color: var(--accent) !important; 
+    margin: 0 0 1.5rem 0 !important; 
+    font-weight: 700 !important; 
+    text-transform: uppercase !important; 
+    letter-spacing: 1px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    padding-bottom: 0.8rem !important;
+    display: block !important;
+  }
+  
+  .pines-paragraph-text { 
+    font-size: 1.6rem !important; 
+    color: var(--text-muted) !important; 
+    line-height: 1.75 !important; 
+    margin: 0 !important;
+    text-align: left !important;
+    display: block !important;
+  }
+  
+  
+  /* ==========================================================================
+     8. Academic Research Layout Frames (nim.html / beta.html)
+     ========================================================================== */
+  .paper-section {
+    width: 100vw;
+    height: 100vh;
+    padding-top: 7rem;
+    background: #525659;
+  }
+  
+  .paper-section iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  
+  /* ==========================================================================
+     9. Intersection Observer Animation Triggers
+     ========================================================================== */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .delay-1 { transition-delay: 0.15s; }
+  .delay-2 { transition-delay: 0.3s; }
+  
+  /* ==========================================================================
+     10. Media Queries / Mobile Responsiveness
+     ========================================================================== */
+  @media screen and (max-width: 968px) {
+    nav { padding: 2rem 4%; }
+    .nav-items { gap: 2rem; }
+    .hero-container { grid-template-columns: 1fr; text-align: center; gap: 5rem; }
+    .column-right img { max-width: 300px; }
+    .screener-top-bar { flex-direction: column; align-items: flex-start; }
+    .matches-count-badge { align-self: flex-end; }
+  }
+
+  /* Navigation Logo Layout Updates */
+nav .logo a {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -1px;
+}
+
+/* Remove the old CSS emoji override completely */
+nav .logo a::before {
+  content: none !important;
+}
+
+.nav-logo-img {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Hero Section Logo Layout Custom Styling */
+.hero-logo-img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  transition: filter 0.3s ease;
+}
+
+/* Dark mode contrast optimization logic */
+body.dark-mode .nav-logo-img,
+body.dark-mode .hero-logo-img {
+  filter: brightness(0.95) contrast(1.05);
+}
+
+/* Sidebar Form Factor Protection */
+.indicators-container * {
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Dropdown Navigation Mechanics (Smooth Fade & Delay)
+   ========================================================================== */
+   .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-menu {
+    display: block;            /* Keep display block so transitions work */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1rem 0;
+    box-shadow: var(--card-shadow);
+    
+    /* Fade out state */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    
+    /* The trick: delay the visibility transition on exit so it stays longer */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.2s;
+    z-index: 100;
+  }
+  
+  /* Hover state */
+  .dropdown:hover .dropdown-menu,
+  .dropdown.mobile-open .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    /* Remove the visibility delay instantly when opening */
+    transition-delay: 0s;
+  }
+  
+  .dropdown-menu a {
+    display: block;
+    padding: 1rem 2rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1.4rem;
+    transition: background 0.2s ease;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: var(--bg-primary);
+    color: var(--accent);
+  }

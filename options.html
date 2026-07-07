@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guide to Options - Pines Finance Portfolio</title>
+  <link rel="icon" type="image/png" href="image/logo.png">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="index.html" aria-label="Pines Finance Logo">
+        <img src="image/logo.png" alt="Pines Finance Icon" class="nav-logo-img">
+        <span>PINES FINANCE</span>
+      </a>
+    </div>
+    <div class="nav-items">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="guide.html" class="active-nav-link">Guide to Markets</a>
+      <div class="dropdown">
+        <span class="dropdown-trigger">Papers</span>
+        <div class="dropdown-menu">
+          <a href="nim.html">Fed Rates on NIM</a>
+          <a href="beta.html">Beta and Valuation</a>
+          <a href="paper3.html">Paper 3</a>
+          <a href="paper4.html">Paper 4</a>
+        </div>
+      </div>   
+      <button id="theme-toggle" class="theme-btn" aria-label="Toggle light and dark mode">
+        <span class="mode-icon-light">☀️</span>
+        <span class="mode-icon-dark">🌙</span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="subguide-section">
+    <div class="subguide-header scroll-reveal">
+      <a href="guide.html" class="back-link">← Back to Markets</a>
+      <h1 class="subguide-heading">Guide to Options</h1>
+    </div>
+
+    <div class="accordion-wrapper scroll-reveal delay-1">
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          <span>1. The Intuitive Analogy</span>
+          <span class="accordion-arrow">▼</span>
+        </button>
+        <div class="accordion-content">
+          <div style="font-size: 1.5rem; line-height: 1.7; color: var(--text-primary);">
+            <p>Imagine it is the middle of the football season, and the Miami Dolphins are on a massive winning streak. People are starting to bet they will make it to the championship game. Tickets for that final game are already highly sought after, but broad public sales have not opened yet.</p>
+<br>
+<p>A broker offers you a contract that gives you a guaranteed right to buy a premium championship ticket for exactly 100 dollars anytime between now and game day. To lock in this contract, you pay a non-refundable down payment, which is the option premium, of 10 dollars.</p>
+<br>
+<p>Consider the scenarios closer to the game. If the Dolphins actually finish the season undefeated and make it to the championship, market demand skyrockets. Public ticket values surge to 300 dollars. Your contract becomes highly valuable. You execute your right to buy at 100 dollars, sell it on the open market for 300 dollars, and net a clear profit.</p>
+<br>
+<p>On the other hand, if the star quarterback gets injured next week, team performance drops, and they miss the playoffs completely. Open-market tickets for the game plunge to 50 dollars. In this case, you simply walk away. You are not forced to buy a ticket for 100 dollars when it is only worth 50 dollars. Your total loss is strictly capped at your initial down payment of 10 dollars.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          <span>2. Underlying Concept</span>
+          <span class="accordion-arrow">▼</span>
+        </button>
+        <div class="accordion-content">
+          <div style="font-size: 1.5rem; line-height: 1.7; color: var(--text-primary);">
+            <p>An option is a type of financial contract. This means its value is completely tied to the performance of an independent asset known as the underlying security, such as a stock, a commodity, or an index.</p>
+            <br>
+            <p>Options represent legal agreements between a buyer and a seller. The buyer obtains the rights of the contract, while the seller accepts the dynamic obligations, operating as the risk underwriter in exchange for upfront cash premium.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          <span>3. Core Architectures</span>
+          <span class="accordion-arrow">▼</span>
+        </button>
+        <div class="accordion-content">
+          <div style="font-size: 1.5rem; line-height: 1.7; color: var(--text-primary);">
+            <p>Call options grant the buyer the right, but not the obligation, to buy an underlying asset at a specified price within a set time window. This is equivalent to your right to buy the football ticket in the analogy.</p>
+            <br>
+            <p>Put options grant the buyer the right, but not the obligation, to sell an underlying asset at a specified price within a set time window. This acts like an insurance policy that locks in a guaranteed high sale value even if the underlying asset drops in the open market.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          <span>4. Strike Price & Premium Mechanics</span>
+          <span class="accordion-arrow">▼</span>
+        </button>
+        <div class="accordion-content">
+          <div style="font-size: 1.5rem; line-height: 1.7; color: var(--text-primary);">
+            <p>The strike price is the static, predefined execution metric at which the contract owner can choose to buy or sell the underlying asset. This matches the 100 dollar target from the football analogy.</p>
+            <br>
+            <p>The premium represents the dynamic market price required to purchase that contract. It constantly shifts up and down based on how close the underlying asset real price gets to the strike price benchmark.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          <span>5. Moneyness Dimensions</span>
+          <span class="accordion-arrow">▼</span>
+        </button>
+        <div class="accordion-content">
+          <div style="font-size: 1.5rem; line-height: 1.7; color: var(--text-primary);">
+            <p>Moneyness describes the positional relationship between the current spot market value of an equity and the strike price parameter of a contract.</p>
+            <br>
+            <p>In the money options hold immediate, real intrinsic value. For a call, this means the asset price is higher than the strike price.</p>
+            <br>
+            <p>At the money options occur when the asset current market valuation is perfectly equal to the strike price threshold.</p>
+            <br>
+            <p>Out of the money options contain zero real intrinsic value and consist purely of speculative value. For a call, the asset price is currently below the strike price.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          <span>6. Risk Management Metrics</span>
+          <span class="accordion-arrow">▼</span>
+        </button>
+        <div class="accordion-content">
+          <div style="font-size: 1.5rem; line-height: 1.7; color: var(--text-primary); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 1rem;">
+            
+            <div style="background: var(--bg-primary); padding: 2rem; border-radius: 6px; border: 1px solid var(--border-color);">
+              <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Delta ($\Delta$)</h4>
+              <p style="font-size: 1.3rem; color: var(--text-muted);">Measures the expected rate of change in option premium for every 1 dollar movement in the underlying asset price profile.</p>
+            </div>
+
+            <div style="background: var(--bg-primary); padding: 2rem; border-radius: 6px; border: 1px solid var(--border-color);">
+              <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Gamma ($\Gamma$)</h4>
+              <p style="font-size: 1.3rem; color: var(--text-muted);">Measures the structural acceleration rate of Delta. This shows how sensitive your price momentum tracking is to volatility swings.</p>
+            </div>
+
+            <div style="background: var(--bg-primary); padding: 2rem; border-radius: 6px; border: 1px solid var(--border-color);">
+              <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Theta ($\Theta$)</h4>
+              <p style="font-size: 1.3rem; color: var(--text-muted);">Measures the explicit mathematical rate of time decay, determining how much premium value melts away automatically each day as the contract nears expiration.</p>
+            </div>
+
+            <div style="background: var(--bg-primary); padding: 2rem; border-radius: 6px; border: 1px solid var(--border-color);">
+              <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Vega ($\nu$)</h4>
+              <p style="font-size: 1.3rem; color: var(--text-muted);">Measures sensitivity to changes in implied volatility. This details contract price exposure shifts relative to general market fear indexes.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) { entry.target.classList.add('active'); }
+          else { entry.target.classList.remove('active'); }
+        });
+      }, { threshold: 0.05 });
+      document.querySelectorAll('.scroll-reveal').forEach((el) => revealObserver.observe(el));
+
+      const triggers = document.querySelectorAll('.accordion-trigger');
+      triggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const item = trigger.parentElement;
+          const isActive = item.classList.contains('active');
+          
+          document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+          
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+
+      const themeBtn = document.getElementById('theme-toggle');
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+      if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+          document.body.classList.toggle('dark-mode');
+          localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
+      }
+    });
+    const dropdownTrigger = document.querySelector('.dropdown-trigger');
+if (dropdownTrigger) {
+  dropdownTrigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdownTrigger.parentElement.classList.toggle('mobile-open');
+  });
+}
+  </script>
+
+</body>
+</html>

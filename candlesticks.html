@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candlestick Patterns - Pines Finance Portfolio</title>
+  <link rel="icon" type="image/png" href="image/logo.png">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="index.html" aria-label="Pines Finance Logo"></a>
+    </div>
+    <div class="nav-items">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="guide.html">Guide to Markets</a>
+      <div class="dropdown">
+        <span class="dropdown-trigger">Papers</span>
+        <div class="dropdown-menu">
+          <a href="nim.html">Fed Rates on NIM</a>
+          <a href="beta.html">Beta and Valuation</a>
+          <a href="paper3.html">Paper 3</a>
+          <a href="paper4.html">Paper 4</a>
+        </div>
+      </div>
+      <button id="theme-toggle" class="theme-btn" aria-label="Toggle light and dark mode">
+        <span class="mode-icon-light">☀️</span>
+        <span class="mode-icon-dark">🌙</span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="subguide-section">
+    <div class="subguide-container scroll-reveal">
+      
+      <div class="subguide-header">
+        <a href="stocks.html" class="back-link">← Back to Stocks</a>
+        <h1 class="subguide-heading">Candlestick Formations</h1>
+        <p class="subguide-lead">Examine visual price patterns to spot shifts in market psychology and trend directions.</p>
+      </div>
+
+      <div class="search-wrapper">
+        <input type="text" id="candleSearch" placeholder="Search specific patterns..." autocomplete="off">
+        <span class="search-clear-btn" id="searchClear">&times;</span>
+      </div>
+      
+
+      <div class="accordion-wrapper">
+        
+        <!-- Section 1: Bullish Reversal Patterns -->
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            <span>Bullish Reversal Patterns</span>
+            <span class="accordion-arrow">▼</span>
+          </button>
+          <div class="accordion-content">
+            <p class="section-brief-desc">These patterns form at the bottom of a downtrend, signaling that sellers are losing control and an upward turn is coming.</p>
+            <div class="candlesticks-grid">
+              
+              <div class="candle-card-item">
+                <div class="candle-visual-box">
+                  <div class="css-wick" style="height: 80px; top: 25px;"></div>
+                  <div class="css-body" style="height: 20px; top: 25px;"></div>
+                </div>
+                <h3>Hammer</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box">
+                  <div class="css-wick" style="height: 80px; top: 25px;"></div>
+                  <div class="css-body" style="height: 20px; bottom: 25px;"></div>
+                </div>
+                <h3>Inverted Hammer</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 40px; top: 45px;"></div><div class="css-body bearish" style="height: 25px; top: 50px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 80px; top: 25px;"></div><div class="css-body" style="height: 65px; top: 30px;"></div></div>
+                </div>
+                <h3>Bullish Engulfing</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 70px; top: 30px;"></div><div class="css-body bearish" style="height: 55px; top: 35px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 60px; top: 55px;"></div><div class="css-body" style="height: 45px; top: 60px;"></div></div>
+                </div>
+                <h3>Piercing Line</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 70px; top: 25px;"></div><div class="css-body bearish" style="height: 55px; top: 30px;"></div></div>
+                  <div class="candle-single"><div class="css-wick neutral" style="height: 30px; top: 85px;"></div><div class="css-body neutral" style="height: 10px; top: 95px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 60px; top: 40px;"></div><div class="css-body" style="height: 45px; top: 45px;"></div></div>
+                </div>
+                <h3>Morning Star</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 70px; top: 25px;"></div><div class="css-body bearish" style="height: 55px; top: 30px;"></div></div>
+                  <div class="candle-single"><div class="css-wick neutral" style="height: 40px; top: 80px;"></div><div class="css-body neutral" style="height: 2px; top: 99px; width: 20px !important;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 60px; top: 40px;"></div><div class="css-body" style="height: 45px; top: 45px;"></div></div>
+                </div>
+                <h3>Morning Doji Star</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick" style="height: 40px; top: 65px;"></div><div class="css-body" style="height: 30px; top: 70px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 40px; top: 45px;"></div><div class="css-body" style="height: 30px; top: 50px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 40px; top: 25px;"></div><div class="css-body" style="height: 30px; top: 30px;"></div></div>
+                </div>
+                <h3>Three White Soldiers</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 80px; top: 25px;"></div><div class="css-body bearish" style="height: 65px; top: 32px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 30px; top: 50px;"></div><div class="css-body" style="height: 15px; top: 57px;"></div></div>
+                </div>
+                <h3>Bullish Harami</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 80px; top: 25px;"></div><div class="css-body bearish" style="height: 65px; top: 32px;"></div></div>
+                  <div class="candle-single"><div class="css-wick neutral" style="height: 40px; top: 45px;"></div><div class="css-body neutral" style="height: 2px; top: 64px; width: 20px !important;"></div></div>
+                </div>
+                <h3>Bullish Harami Cross</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 50px; top: 55px;"></div><div class="css-body bearish" style="height: 40px; top: 60px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 50px; top: 25px;"></div><div class="css-body" style="height: 40px; top: 25px;"></div></div>
+                </div>
+                <h3>Bullish Kicker</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 60px; top: 35px;"></div><div class="css-body bearish" style="height: 40px; top: 35px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 60px; top: 35px;"></div><div class="css-body" style="height: 40px; top: 55px;"></div></div>
+                </div>
+                <h3>Tweezer Bottom</h3>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+                <!-- Section 2: Bearish Reversal Patterns -->
+                <div class="accordion-item">
+                  <button class="accordion-trigger">
+                    <span>Bearish Reversal Patterns</span>
+                    <span class="accordion-arrow">▼</span>
+                  </button>
+                  <div class="accordion-content">
+                    <p class="section-brief-desc">These patterns appear at the peak of an uptrend, warning that buying momentum is drying up and a downward move is likely.</p>
+                    <div class="candlesticks-grid">
+                      
+                      <div class="candle-card-item">
+                        <div class="candle-visual-box row">
+                          <div class="candle-single"><div class="css-wick bearish" style="height: 60px; top: 25px;"></div><div class="css-body bearish" style="height: 20px; top: 85px;"></div></div>
+                        </div>
+                        <h3>Shooting Star</h3>
+                      </div>
+        
+                      <div class="candle-card-item">
+                        <div class="candle-visual-box row">
+                          <div class="candle-single"><div class="css-wick bearish" style="height: 65px; top: 40px;"></div><div class="css-body bearish" style="height: 25px; top: 40px;"></div></div>
+                        </div>
+                        <h3>Hanging Man</h3>
+                      </div>
+        
+                      <div class="candle-card-item">
+                        <div class="candle-visual-box row">
+                          <div class="candle-single"><div class="css-wick" style="height: 50px; top: 40px;"></div><div class="css-body" style="height: 30px; top: 50px;"></div></div>
+                          <div class="candle-single"><div class="css-wick bearish" style="height: 80px; top: 25px;"></div><div class="css-body bearish" style="height: 60px; top: 35px;"></div></div>
+                        </div>
+                        <h3>Bearish Engulfing</h3>
+                      </div>
+        
+                      <div class="candle-card-item">
+                        <div class="candle-visual-box row">
+                          <div class="candle-single"><div class="css-wick" style="height: 70px; top: 30px;"></div><div class="css-body" style="height: 50px; top: 40px;"></div></div>
+                          <div class="candle-single"><div class="css-wick bearish" style="height: 75px; top: 20px;"></div><div class="css-body bearish" style="height: 55px; top: 20px;"></div></div>
+                        </div>
+                        <h3>Dark Cloud Cover</h3>
+                      </div>
+        
+                      <div class="candle-card-item">
+                        <div class="candle-visual-box row">
+                          <div class="candle-single"><div class="css-wick" style="height: 70px; top: 25px;"></div><div class="css-body" style="height: 50px; top: 35px;"></div></div>
+                          <div class="candle-single"><div class="css-wick neutral" style="height: 30px; top: 50px;"></div><div class="css-body neutral" style="height: 10px; top: 60px;"></div></div>
+                          <div class="candle-single"><div class="css-wick bearish" style="height: 70px; top: 45px;"></div><div class="css-body bearish" style="height: 50px; top: 55px;"></div></div>
+                        </div>
+                        <h3>Evening Star</h3>
+                      </div>
+        
+                      <div class="candle-card-item">
+                        <div class="candle-visual-box row">
+                          <div class="candle-single"><div class="css-wick" style="height: 70px; top: 25px;"></div><div class="css-body" style="height: 50px; top: 35px;"></div></div>
+                          <div class="candle-single"><div class="css-wick neutral" style="height: 60px; top: 35px;"></div><div class="css-body neutral" style="height: 2px; top: 64px; width: 24px !important;"></div></div>
+                          <div class="candle-single"><div class="css-wick bearish" style="height: 70px; top: 45px;"></div><div class="css-body bearish" style="height: 50px; top: 55px;"></div></div>
+                        </div>
+                        <h3>Evening Doji Star</h3>
+                      </div>
+        
+                      <div class="candle-card-item">
+                        <div class="candle-visual-box row">
+                          <div class="candle-single"><div class="css-wick bearish" style="height: 55px; top: 30px;"></div><div class="css-body bearish" style="height: 45px; top: 35px;"></div></div>
+                          <div class="candle-single"><div class="css-wick bearish" style="height: 55px; top: 45px;"></div><div class="css-body bearish" style="height: 45px; top: 50px;"></div></div>
+                          <div class="candle-single"><div class="css-wick bearish" style="height: 55px; top: 60px;"></div><div class="css-body bearish" style="height: 45px; top: 65px;"></div></div>
+                        </div>
+                        <h3>Three Black Crows</h3>
+                      </div>
+        
+                      <div class="candle-card-item">
+                        <div class="candle-visual-box row">
+                          <div class="candle-single"><div class="css-wick" style="height: 80px; top: 25px;"></div><div class="css-body" style="height: 60px; top: 35px;"></div></div>
+                          <div class="candle-single"><div class="css-wick bearish" style="height: 40px; top: 45px;"></div><div class="css-body bearish" style="height: 20px; top: 55px;"></div></div>
+                        </div>
+                        <h3>Bearish Harami</h3>
+                      </div>
+        
+                      <div class="candle-card-item">
+                        <div class="candle-visual-box row">
+                          <div class="candle-single"><div class="css-wick" style="height: 80px; top: 25px;"></div><div class="css-body" style="height: 60px; top: 35px;"></div></div>
+                          <div class="candle-single"><div class="css-wick neutral" style="height: 40px; top: 45px;"></div><div class="css-body neutral" style="height: 2px; top: 64px; width: 24px !important;"></div></div>
+                        </div>
+                        <h3>Bearish Harami Cross</h3>
+                      </div>
+        
+                      <div class="candle-card-item">
+                        <div class="candle-visual-box row">
+                          <div class="candle-single"><div class="css-wick" style="height: 50px; top: 25px;"></div><div class="css-body" style="height: 30px; top: 25px;"></div></div>
+                          <div class="candle-single"><div class="css-wick bearish" style="height: 50px; top: 25px;"></div><div class="css-body bearish" style="height: 30px; top: 25px;"></div></div>
+                        </div>
+                        <h3>Tweezer Top</h3>
+                      </div>
+        
+                    </div>
+                  </div>
+                </div>
+        
+      
+                      <!-- Section 3: Continuation Patterns -->
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            <span>Continuation Patterns</span>
+            <span class="accordion-arrow">▼</span>
+          </button>
+          <div class="accordion-content">
+            <p class="section-brief-desc">These setups indicate that the current trend is taking a brief pause and is expected to resume moving in the same direction.</p>
+            <div class="candlesticks-grid">
+              
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick" style="height: 70px; top: 30px;"></div><div class="css-body" style="height: 60px; top: 35px;"></div></div>
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 25px; top: 45px;"></div><div class="css-body bearish" style="height: 15px; top: 50px;"></div></div>
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 25px; top: 55px;"></div><div class="css-body bearish" style="height: 15px; top: 60px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 70px; top: 25px;"></div><div class="css-body" style="height: 60px; top: 30px;"></div></div>
+                </div>
+                <h3>Rising Three Methods</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 70px; top: 25px;"></div><div class="css-body bearish" style="height: 60px; top: 30px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 25px; top: 55px;"></div><div class="css-body" style="height: 15px; top: 55px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 25px; top: 45px;"></div><div class="css-body" style="height: 15px; top: 45px;"></div></div>
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 70px; top: 35px;"></div><div class="css-body bearish" style="height: 60px; top: 40px;"></div></div>
+                </div>
+                <h3>Falling Three Methods</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 60px; top: 40px;"></div><div class="css-body bearish" style="height: 40px; top: 50px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 60px; top: 40px;"></div><div class="css-body" style="height: 40px; top: 40px;"></div></div>
+                </div>
+                <h3>Separating Lines</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick" style="height: 40px; top: 60px;"></div><div class="css-body" style="height: 25px; top: 65px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 40px; top: 30px;"></div><div class="css-body" style="height: 25px; top: 30px;"></div></div>
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 45px; top: 45px;"></div><div class="css-body bearish" style="height: 25px; top: 45px;"></div></div>
+                </div>
+                <h3>Upside Tasuki Gap</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 40px; top: 30px;"></div><div class="css-body bearish" style="height: 25px; top: 35px;"></div></div>
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 40px; top: 60px;"></div><div class="css-body bearish" style="height: 25px; top: 65px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 45px; top: 50px;"></div><div class="css-body" style="height: 25px; top: 60px;"></div></div>
+                </div>
+                <h3>Downside Tasuki Gap</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick" style="height: 60px; top: 40px;"></div><div class="css-body" style="height: 45px; top: 45px;"></div></div>
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 20px; top: 50px;"></div><div class="css-body bearish" style="height: 10px; top: 55px;"></div></div>
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 20px; top: 65px;"></div><div class="css-body bearish" style="height: 10px; top: 65px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 60px; top: 30px;"></div><div class="css-body" style="height: 45px; top: 35px;"></div></div>
+                </div>
+                <h3>Mat Hold</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick" style="height: 40px; top: 60px;"></div><div class="css-body" style="height: 25px; top: 65px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 40px; top: 35px;"></div><div class="css-body" style="height: 25px; top: 35px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 40px; top: 35px;"></div><div class="css-body" style="height: 25px; top: 35px;"></div></div>
+                </div>
+                <h3>Side-by-Side White Lines</h3>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4: Neutral & Indecision Patterns -->
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            <span>Neutral & Indecision Patterns</span>
+            <span class="accordion-arrow">▼</span>
+          </button>
+          <div class="accordion-content">
+            <p class="section-brief-desc">These setups show an exact balance between buyers and sellers, highlighting market uncertainty and potential pivot zones.</p>
+            <div class="candlesticks-grid">
+              
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick neutral" style="height: 80px; top: 25px;"></div><div class="css-body neutral" style="height: 2px; top: 64px; width: 24px !important;"></div></div>
+                </div>
+                <h3>Doji</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick neutral" style="height: 100px; top: 15px;"></div><div class="css-body neutral" style="height: 2px; top: 64px; width: 24px !important;"></div></div>
+                </div>
+                <h3>Long-Legged Doji</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick neutral" style="height: 60px; top: 35px;"></div><div class="css-body neutral" style="height: 2px; top: 35px; width: 24px !important;"></div></div>
+                </div>
+                <h3>Dragonfly Doji</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick neutral" style="height: 60px; top: 35px;"></div><div class="css-body neutral" style="height: 2px; top: 93px; width: 24px !important;"></div></div>
+                </div>
+                <h3>Gravestone Doji</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick neutral" style="height: 60px; top: 35px;"></div><div class="css-body neutral" style="height: 20px; top: 55px;"></div></div>
+                </div>
+                <h3>Spinning Top</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-body" style="height: 80px; top: 25px;"></div></div>
+                </div>
+                <h3>Marubozu</h3>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 5: Complex & Specialized Patterns -->
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            <span>Complex & Specialized Patterns</span>
+            <span class="accordion-arrow">▼</span>
+          </button>
+          <div class="accordion-content">
+            <p class="section-brief-desc">Unique multi-candle formations that involve price gaps or specific sequential indicators.</p>
+            <div class="candlesticks-grid">
+              
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 50px; top: 25px;"></div><div class="css-body bearish" style="height: 35px; top: 30px;"></div></div>
+                  <div class="candle-single"><div class="css-wick neutral" style="height: 30px; top: 75px;"></div><div class="css-body neutral" style="height: 2px; top: 89px; width: 16px !important;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 50px; top: 40px;"></div><div class="css-body" style="height: 35px; top: 45px;"></div></div>
+                </div>
+                <h3>Abandoned Baby</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 60px; top: 30px;"></div><div class="css-body bearish" style="height: 45px; top: 30px;"></div></div>
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 65px; top: 45px;"></div><div class="css-body bearish" style="height: 15px; top: 45px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 40px; top: 55px;"></div><div class="css-body" style="height: 20px; top: 55px;"></div></div>
+                </div>
+                <h3>Unique Three River Bottom</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick" style="height: 30px; top: 75px;"></div><div class="css-body" style="height: 15px; top: 75px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 35px; top: 55px;"></div><div class="css-body" style="height: 20px; top: 55px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 45px; top: 45px;"></div><div class="css-body" style="height: 25px; top: 45px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 55px; top: 35px;"></div><div class="css-body" style="height: 35px; top: 35px;"></div></div>
+                </div>
+                <h3>Breakaway</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick" style="height: 40px; top: 55px;"></div><div class="css-body" style="height: 25px; top: 60px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 40px; top: 45px;"></div><div class="css-body" style="height: 25px; top: 50px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 40px; top: 35px;"></div><div class="css-body" style="height: 25px; top: 40px;"></div></div>
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 75px; top: 35px;"></div><div class="css-body bearish" style="height: 60px; top: 35px;"></div></div>
+                </div>
+                <h3>Three Line Strike</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 50px; top: 25px;"></div><div class="css-body bearish" style="height: 35px; top: 25px;"></div></div>
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 50px; top: 35px;"></div><div class="css-body bearish" style="height: 35px; top: 35px;"></div></div>
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 40px; top: 55px;"></div><div class="css-body bearish" style="height: 25px; top: 55px;"></div></div>
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 45px; top: 65px;"></div><div class="css-body bearish" style="height: 30px; top: 65px;"></div></div>
+                </div>
+                <h3>Concealing Baby Swallow</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 30px; top: 35px;"></div><div class="css-body bearish" style="height: 15px; top: 35px;"></div></div>
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 30px; top: 45px;"></div><div class="css-body bearish" style="height: 15px; top: 45px;"></div></div>
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 30px; top: 55px;"></div><div class="css-body bearish" style="height: 15px; top: 55px;"></div></div>
+                  <div class="candle-single"><div class="css-wick neutral" style="height: 40px; top: 65px;"></div><div class="css-body neutral" style="height: 15px; top: 75px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 60px; top: 45px;"></div><div class="css-body" style="height: 40px; top: 45px;"></div></div>
+                </div>
+                <h3>Ladder Bottom</h3>
+              </div>
+
+              <div class="candle-card-item">
+                <div class="candle-visual-box row">
+                  <div class="candle-single"><div class="css-wick bearish" style="height: 60px; top: 30px;"></div><div class="css-body bearish" style="height: 45px; top: 35px;"></div></div>
+                  <div class="candle-single"><div class="css-wick neutral" style="height: 20px; top: 75px;"></div><div class="css-body neutral" style="height: 10px; top: 75px;"></div></div>
+                  <div class="candle-single"><div class="css-wick" style="height: 60px; top: 40px;"></div><div class="css-body" style="height: 45px; top: 45px;"></div></div>
+                </div>
+                <h3>Tower Top / Bottom</h3>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="search-empty-state" id="emptyNotice">No matching patterns located.</div>
+
+  </section>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add('active'); }
+        else { entry.target.classList.remove('active'); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el));
+  
+    const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    const cardItems = document.querySelectorAll('.candle-card-item');
+    const searchInput = document.getElementById('candleSearch');
+    const searchClear = document.getElementById('searchClear');
+    const emptyNotice = document.getElementById('emptyNotice');
+  
+    // 1. Accordion Manual Toggle Controls
+    accordionTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const currentItem = trigger.parentElement;
+        const isActive = currentItem.classList.contains('active');
+        
+        accordionItems.forEach(item => item.classList.remove('active'));
+        
+        if (!isActive) {
+          currentItem.classList.add('active');
+        }
+      });
+    });
+  
+    // 2. High-Performance Smart Candlestick Search Engine
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase().trim();
+        let totalVisibleMatches = 0;
+  
+        if (searchClear) {
+          searchClear.style.display = query.length > 0 ? 'block' : 'none';
+        }
+  
+        // Check each accordion category block separately
+        accordionItems.forEach(item => {
+          const cardsInThisSection = item.querySelectorAll('.candle-card-item');
+          let matchesInThisSection = 0;
+  
+          cardsInThisSection.forEach(card => {
+            const patternTitleText = card.querySelector('h3').innerText.toLowerCase();
+            
+            if (patternTitleText.includes(query)) {
+              card.style.setProperty('display', 'flex', 'important');
+              matchesInThisSection++;
+              totalVisibleMatches++;
+            } else {
+              card.style.setProperty('display', 'none', 'important');
+            }
+          });
+  
+          // Smart behavior: Show the section and expand it open if it contains results
+          if (query.length > 0) {
+            if (matchesInThisSection > 0) {
+              item.style.setProperty('display', 'block', 'important');
+              item.classList.add('active');
+            } else {
+              item.style.setProperty('display', 'none', 'important');
+              item.classList.remove('active');
+            }
+          } else {
+            // Reset view back to clean default collapsed state when text box clears
+            item.style.setProperty('display', 'block', 'important');
+            item.classList.remove('active');
+          }
+        });
+  
+        if (emptyNotice) {
+          emptyNotice.style.setProperty('display', totalVisibleMatches === 0 ? 'block' : 'none', 'important');
+        }
+      });
+    }
+  
+    // 3. Clear Search Action Handlers
+    if (searchClear && searchInput) {
+      searchClear.addEventListener('click', () => {
+        searchInput.value = '';
+        searchClear.style.display = 'none';
+        if (emptyNotice) emptyNotice.style.display = 'none';
+        
+        accordionItems.forEach(item => {
+          item.style.setProperty('display', 'block', 'important');
+          item.classList.remove('active');
+          const sectionCards = item.querySelectorAll('.candle-card-item');
+          sectionCards.forEach(card => card.style.setProperty('display', 'flex', 'important'));
+        });
+        searchInput.focus();
+      });
+    }
+  
+    // 4. Dark Mode Mode Toggling Sync Engine
+    const themeBtn = document.getElementById('theme-toggle');
+    if (localStorage.getItem('theme') === 'dark') { document.body.classList.add('dark-mode'); }
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      });
+    }
+    const dropdownTrigger = document.querySelector('.dropdown-trigger');
+if (dropdownTrigger) {
+  dropdownTrigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdownTrigger.parentElement.classList.toggle('mobile-open');
+  });
+}
+  </script>
+  
+
+</body>
+</html>

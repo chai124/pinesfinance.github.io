@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technical Indicators - Pines Finance Portfolio</title>
+  <link rel="icon" type="image/png" href="image/logo.png">
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* Quick local layout fixes to ensure the sidebar layout never breaks */
+    .indicators-container {
+      display: flex;
+      gap: 4rem;
+      margin-top: 3rem;
+      align-items: flex-start;
+    }
+
+    .indicators-sidebar {
+      flex: 0 0 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: sticky;
+      top: 10rem;
+    }
+
+    .indicator-tab-btn {
+      width: 100%;
+      text-align: left;
+      padding: 1.5rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-size: 1.4rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .indicator-tab-btn .tab-tag {
+      font-size: 1rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-family: monospace;
+    }
+
+    .indicator-tab-btn:hover {
+      border-color: var(--accent);
+      background: var(--bg-primary);
+    }
+
+    .indicator-tab-btn.active-tab {
+      background: var(--accent-glow);
+      border-color: var(--accent);
+      color: var(--text-primary);
+    }
+
+    .indicators-main-content {
+      flex: 1;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 4rem;
+      min-height: 450px;
+    }
+
+    .indicator-panel {
+      display: none;
+    }
+
+    .indicator-panel.active-panel {
+      display: block;
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    .indicator-meta-tag {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .indicator-math-block {
+      background: var(--bg-primary);
+      padding: 2rem;
+      border-radius: 6px;
+      border-left: 4px solid var(--accent);
+      margin: 2rem 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .indicators-container {
+        flex-direction: column;
+      }
+      .indicators-sidebar {
+        flex: 1 1 auto;
+        width: 100%;
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="index.html" aria-label="Pines Finance Logo">
+        <img src="image/logo.png" alt="Pines Finance Icon" class="nav-logo-img">
+        <span>PINES FINANCE</span>
+      </a>
+    </div>
+    <div class="nav-items">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="guide.html" class="active-nav-link">Guide to Markets</a>
+      <div class="dropdown">
+        <span class="dropdown-trigger">Papers</span>
+        <div class="dropdown-menu">
+          <a href="nim.html">Fed Rates on NIM</a>
+          <a href="beta.html">Beta and Valuation</a>
+          <a href="paper3.html">Paper 3</a>
+          <a href="paper4.html">Paper 4</a>
+        </div>
+      </div>   
+      <button id="theme-toggle" class="theme-btn" aria-label="Toggle light and dark mode">
+        <span class="mode-icon-light">☀️</span>
+        <span class="mode-icon-dark">🌙</span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="subguide-section" style="max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;">
+    <div class="subguide-header scroll-reveal">
+      <a href="index.html" class="back-link">← Back to Home</a>
+      <h1 class="subguide-heading" style="margin-bottom: 1rem;">Technical Indicators</h1>
+      <p class="subguide-lead">Select an analytical tool to explore its mathematical logic, signal triggers, and strategic deployment boundaries.</p>
+    </div>
+
+    <div class="indicators-container scroll-reveal delay-1">
+      
+      <div class="indicators-sidebar">
+        <button class="indicator-tab-btn active-tab" data-target="rsi">
+          <span class="tab-tag">Strength & Momentum</span>
+          <span>Relative Strength Index (RSI)</span>
+        </button>
+        <button class="indicator-tab-btn" data-target="macd">
+          <span class="tab-tag">Trend Tracking</span>
+          <span>MACD</span>
+        </button>
+        <button class="indicator-tab-btn" data-target="supertrend">
+          <span class="tab-tag">Trend Following</span>
+          <span>Supertrend</span>
+        </button>
+        <button class="indicator-tab-btn" data-target="psar">
+          <span class="tab-tag">Volatility & Stops</span>
+          <span>Parabolic SAR</span>
+        </button>
+        <button class="indicator-tab-btn" data-target="ao">
+          <span class="tab-tag">Pure Momentum</span>
+          <span>Awesome Oscillator (AO)</span>
+        </button>
+      </div>
+
+      <div class="indicators-main-content">
+
+        <div class="indicator-panel active-panel" id="rsi">
+          <span class="indicator-meta-tag">Category: Momentum & Market Strength | Default Period: 14</span>
+          <h2 style="font-size: 2.4rem; margin-bottom: 1.5rem;">Relative Strength Index (RSI)</h2>
+          
+          <h3 style="font-size: 1.6rem; margin-top: 2rem; margin-bottom: 0.5rem;">Core Mechanism</h3>
+          <p style="font-size: 1.5rem; line-height: 1.7; color: var(--text-primary);">
+            The RSI is a bounded oscillator that tracks the speed and size of recent price changes. By comparing the days a stock closes up against the days it closes down over a 14-period window, it fits market momentum onto a scale from 0 to 100.
+          </p>
+
+          <div class="indicator-math-block">
+            <p style="font-size: 1.4rem; font-family: monospace; color: var(--text-primary);">
+              Base Formula: $RSI = 100 - \frac{100}{1 + RS}$ <br>
+              Where $RS = \frac{\text{Average Gain}}{\text{Average Loss}}$
+            </p>
+          </div>
+
+          <h3 style="font-size: 1.6rem; margin-top: 2rem; margin-bottom: 0.5rem;">Strategic Execution</h3>
+          <p style="font-size: 1.5rem; line-height: 1.7; color: var(--text-primary);">
+            In standard charting, values above 70 indicate overbought conditions where a rally might be getting tired. Values below 30 point to oversold conditions where a stock might bounce. In broader macro trends, crossing above the 50 baseline confirmed structural upward momentum.
+          </p>
+        </div>
+
+        <div class="indicator-panel" id="macd">
+          <span class="indicator-meta-tag">Category: Trend Tracking | Default: 12, 26, 9</span>
+          <h2 style="font-size: 2.4rem; margin-bottom: 1.5rem;">Moving Average Convergence Divergence (MACD)</h2>
+          
+          <h3 style="font-size: 1.6rem; margin-top: 2rem; margin-bottom: 0.5rem;">Core Mechanism</h3>
+          <p style="font-size: 1.5rem; line-height: 1.7; color: var(--text-primary);">
+            The MACD charts the relationship between two moving averages of a stock price. It takes a fast moving average and subtracts a slower one to plot a fluctuating line that shows trend acceleration before it completely shows up in the stock price.
+          </p>
+
+          <div class="indicator-math-block">
+            <p style="font-size: 1.4rem; font-family: monospace; color: var(--text-primary);">
+              MACD Line = 12-Period EMA - 26-Period EMA <br>
+              Signal Line = 9-Period EMA of the MACD Line
+            </p>
+          </div>
+
+          <h3 style="font-size: 1.6rem; margin-top: 2rem; margin-bottom: 0.5rem;">Strategic Execution</h3>
+          <p style="font-size: 1.5rem; line-height: 1.7; color: var(--text-primary);">
+            Traders watch for the MACD line to cross over the slower Signal line. Crossing above it signals bullish momentum, while crossing below suggests a turning point to the downside. The center histogram shows the widening or narrowing gap between the two lines.
+          </p>
+        </div>
+
+        <div class="indicator-panel" id="supertrend">
+          <span class="indicator-meta-tag">Category: Trend Following | Default: 10, 3</span>
+          <h2 style="font-size: 2.4rem; margin-bottom: 1.5rem;">Supertrend</h2>
+          
+          <h3 style="font-size: 1.6rem; margin-top: 2rem; margin-bottom: 0.5rem;">Core Mechanism</h3>
+          <p style="font-size: 1.5rem; line-height: 1.7; color: var(--text-primary);">
+            Supertrend is an overlay indicator that draws a continuous line directly on the price chart to map the current trend direction. It combines a simple moving average with a volatility measure to make sure ordinary daily noise does not trigger a false signal.
+          </p>
+
+          <h3 style="font-size: 1.6rem; margin-top: 2rem; margin-bottom: 0.5rem;">Strategic Execution</h3>
+          <p style="font-size: 1.5rem; line-height: 1.7; color: var(--text-primary);">
+            When the line flips below the stock price and turns green, it indicates a buy signal. When it flips above the price and turns red, it indicates a sell signal. It works well as a trailing stop loss during long, continuous market moves.
+          </p>
+        </div>
+
+        <div class="indicator-panel" id="psar">
+          <span class="indicator-meta-tag">Category: Volatility & Stops | Default Acceleration: 0.02</span>
+          <h2 style="font-size: 2.4rem; margin-bottom: 1.5rem;">Parabolic Stop and Reverse (Parabolic SAR)</h2>
+          
+          <h3 style="font-size: 1.6rem; margin-top: 2rem; margin-bottom: 0.5rem;">Core Mechanism</h3>
+          <p style="font-size: 1.5rem; line-height: 1.7; color: var(--text-primary);">
+            The Parabolic SAR places small dots on the chart either above or below the price bars. It is designed to find turning points in a trend and automatically accelerates its tracking speed the longer a trend keeps running in one direction.
+          </p>
+
+          <h3 style="font-size: 1.6rem; margin-top: 2rem; margin-bottom: 0.5rem;">Strategic Execution</h3>
+          <p style="font-size: 1.5rem; line-height: 1.7; color: var(--text-primary);">
+            When the dots switch from being above the candles to underneath them, it shows a trend reversal upward. Because the indicator constantly creeps closer to the price over time, it provides a strict exit plan for protecting gains.
+          </p>
+        </div>
+
+        <div class="indicator-panel" id="ao">
+          <span class="indicator-meta-tag">Category: Pure Momentum | Default: 5, 34</span>
+          <h2 style="font-size: 2.4rem; margin-bottom: 1.5rem;">Awesome Oscillator (AO)</h2>
+          
+          <h3 style="font-size: 1.6rem; margin-top: 2rem; margin-bottom: 0.5rem;">Core Mechanism</h3>
+          <p style="font-size: 1.5rem; line-height: 1.7; color: var(--text-primary);">
+            The Awesome Oscillator looks at market momentum by comparing recent market speed against a broader historical lookback. Instead of using closing prices, it looks at the midpoint of each daily candle to see if buying pressure is genuinely accelerating or slowing down.
+          </p>
+
+          <h3 style="font-size: 1.6rem; margin-top: 2rem; margin-bottom: 0.5rem;">Strategic Execution</h3>
+          <p style="font-size: 1.5rem; line-height: 1.7; color: var(--text-primary);">
+            The simplest signal is watching the oscillator cross the zero line. Crossing from negative to positive shows building bullish momentum, while dropping below zero shows sellers are taking control.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const tabs = document.querySelectorAll('.indicator-tab-btn');
+      const panels = document.querySelectorAll('.indicator-panel');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Deactivate current active states
+          tabs.forEach(t => t.classList.remove('active-tab'));
+          panels.forEach(p => p.classList.remove('active-panel'));
+
+          // Activate newly selected tab and panel
+          tab.classList.add('active-tab');
+          const targetId = tab.getAttribute('data-target');
+          document.getElementById(targetId).classList.add('active-panel');
+        });
+      });
+
+      // Intersection Observer Engine for Scroll Reveals
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) { entry.target.classList.add('active'); }
+          else { entry.target.classList.remove('active'); }
+        });
+      }, { threshold: 0.05 });
+      document.querySelectorAll('.scroll-reveal').forEach((el) => revealObserver.observe(el));
+
+      // Theme Sync Code
+      const themeBtn = document.getElementById('theme-toggle');
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+      if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+          document.body.classList.toggle('dark-mode');
+          localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
+      }
+    });
+    const dropdownTrigger = document.querySelector('.dropdown-trigger');
+if (dropdownTrigger) {
+  dropdownTrigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdownTrigger.parentElement.classList.toggle('mobile-open');
+  });
+}
+  </script>
+
+</body>
+</html>
